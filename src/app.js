@@ -1,8 +1,9 @@
 import express from 'express';
 import fetch from 'node-fetch';
+import dotenv from 'dotenv';
 
 const app = express();
-const apiKey = "40c700a7b663f15c44c7bad71e3eb661";
+const apiKey = process.env.apiKey;
 
 app.use(express.static('public'));
 app.get('/weather', async(req, res) => {
