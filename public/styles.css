@@ -1,10 +1,16 @@
-body{
-    margin: 0;
+body {
+    margin: auto;
+    width: 100%;
     font-family: "Lexend Deca", sans-serif;
     background-color: hsl(51, 95%, 59%);
 }
 
-.container{
+h1 {
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+}
+
+.container {
     background-color: aliceblue;
     box-shadow: 0 0 20px rgba(43, 39, 39, 0.2);
     text-align: center;
@@ -15,7 +21,7 @@ body{
     padding: 10px;
 }
 
-form{
+form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,7 +29,7 @@ form{
     flex-wrap: wrap;
 }
 
-form input[type="text"]{
+form input[type="text"] {
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -32,7 +38,7 @@ form input[type="text"]{
     font-size: 16px;
 }
 
-form input[type="submit"]{
+form input[type="submit"] {
     background-color: rgb(31, 139, 233);
     color: white;
     border-radius: 5px;
@@ -43,17 +49,17 @@ form input[type="submit"]{
     margin-left: 10px;
 }
 
-form input[type="submit"]:hover{
+form input[type="submit"]:hover {
     background-color: rgb(17, 189, 223);
 }
 
-#imgLogo{
+#imgLogo {
     width: 50px;
     margin-right: 10px;
     margin-top: 15px;
 }
 
-.icon img{
+.icon img {
     width: 100px;
     height: 100px;
     background-size: contain;
@@ -61,18 +67,18 @@ form input[type="submit"]:hover{
     background-position: center center;
 }
 
-.temperature{
+.temperature {
     font-size: 50px;
     font-weight: bold;
     margin: 20px 0;
 }
 
-.explanation{
+.explanation {
     font-size: 24px;
     margin-bottom: 20px;
 }
 
-.deepInfo{
+.deepInfo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,5 +104,14 @@ form input[type="submit"]:hover{
 
     form input [type="text"]{
         width: 100%;
+    }
+
+    .deepInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-content: center;
+        align-items: center;
     }
 }
