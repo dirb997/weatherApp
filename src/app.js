@@ -2,17 +2,30 @@ import express from 'express';
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
 
+dotenv.config();
+
 const app = express();
-const apiKey = process.env.apiKey;
+const apiKey = process.env.API_KEY;
+
+if (!apiKey) {
+    console.error("API key is missing. Please set the environment variable.");
+    process.exit(1);
+}
 
 app.use(express.static('public'));
-app.get('/weather', async(req, res) => {
+
+app.get('/', async(req, res) => {
     const cityName = req.query.city;
+
+    if(!cityName) {
+        return res.status(400).json({ error: "City name is required." });
+    }
+
     try {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${apiKey}&units=metric`);
         const data = await response.json();
 
-        if(res.ok){
+        if(response.ok){
             const temp = Math.round(data.main.temp)
             const description = data.weather[0].description;
             const icon = data.weather[0].icon;
@@ -22,7 +35,7 @@ app.get('/weather', async(req, res) => {
                 `Wind speed: ${data.wind.speed} m/s`
             ];
             res.json({temp, description, icon, explanationDetails});
-        }else{
+        } else {
             res.status(404).json({ error: "City not found. Please try another location."})
         }
     } catch (error) {
@@ -32,7 +45,8 @@ app.get('/weather', async(req, res) => {
 });
 
 const PORT = 3000;
+
 app.listen(PORT, () => {
     console.log(`Server is running in port ${PORT}`);
-    console.log("Access point: localhost:3000");
+    console.log("Access point: http://localhost:3000");
 })
